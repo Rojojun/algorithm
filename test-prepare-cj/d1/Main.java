@@ -66,6 +66,22 @@ public class Main {
         }
       }
     }
+
+    // ===== 출력부 (로직 아님, 결과 확인용) — for 밖, 딱 한 번 =====
+    if (programs.isEmpty()) {
+      stringBuilder.append("EMPTY\n");
+    } else {
+      programs.entrySet().stream()
+          .sorted(Comparator.comparingInt(e -> e.getValue().start))
+          .forEach(e -> {
+            ProgramDetail p = e.getValue();
+            stringBuilder.append(p.start).append(' ')
+                .append(p.end).append(' ')
+                .append(e.getKey()).append(' ')
+                .append(p.priority).append('\n');
+          });
+    }
+    System.out.print(stringBuilder);
   }
 
   record ProgramDetail(int start, int end, int priority, int dur) {
