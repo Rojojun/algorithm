@@ -2,9 +2,16 @@ x = float(input())
 n = int(input())
 
 answer = 1.0
+exponent = abs(n)
+current = x
 
-for i in range(abs(n)):
-    answer *= x
+while exponent > 0:
+    if exponent % 2 == 1:
+        answer *= current
+        # 
+
+    current *= current;
+    exponent //= 2
 
 if n < 0:
     answer = 1 / answer
